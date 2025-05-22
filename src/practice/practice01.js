@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import './practice01.css'
+import './Practice01.css'
 
 function Practice01(){
     let [cnt2,setCnt2] = useState(0);
