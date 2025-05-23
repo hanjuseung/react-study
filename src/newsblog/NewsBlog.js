@@ -46,7 +46,7 @@ function NewsBlog() {
                     //입력된 값 : input 요소에서 onChange 가 발생할때 -> inputText state변수에 저장되어 있음.
                     //제목 배열 news 배열 변수에 추가 -> 리렌더링 -> news배열의 갯수만급 반복(map) 화면에 표시
                     if (!(inputText.trim() == '')) {
-                    //if(inputText.trim().length > 0 ) 문자열의 길이로 비교
+                        //if(inputText.trim().length > 0 ) 문자열의 길이로 비교
                         let temp = [...news];
                         temp.push(inputText);
                         setNews(temp);
@@ -61,7 +61,7 @@ function NewsBlog() {
                         setInputText(''); //공백 -> input value={inputText}
                     } else
                         alert('내용을 입력 후 등록하세요~');
-                        setInputText('');
+                    setInputText('');
 
                     //이렇게도 가능
 
@@ -108,6 +108,15 @@ function NewsBlog() {
 
                             }}>❤</span>{likeCountArr[index]}</h4>
                             <p>내용 무</p>
+                            <button onClick={() => {
+                                // splice(인덱스, 삭제할 갯수)
+                                // splice(인덱스, 삭제할 갯수, 추가할 값)
+                                let temp = [...news];
+                                temp.splice(index,1);
+                                setNews(temp);
+
+                                likeCountArr.splice([index],1);
+                            }}>삭제</button>
                         </div>
                     )
 
