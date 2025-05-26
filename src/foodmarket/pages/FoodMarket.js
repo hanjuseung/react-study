@@ -10,8 +10,14 @@ import banner_bg from '../images/banner_bg.jpg';
 import food1 from '../images/food1.jpg';
 import food2 from '../images/food2.jpg';
 import food3 from '../images/food3.jpg';
+import foodsData from '../data/foodsData';
+import { useState } from 'react';
+import FoodCard from '../components/FoodCard';
+
 
 function FoodMarket() {
+
+    let [foods, setFoods] = useState(foodsData);
     return (
         <div>
             <Navbar bg="dark" data-bs-theme="dark">
@@ -47,43 +53,31 @@ function FoodMarket() {
 
             <Container>
                 <Row>
-                    <Col md={4} sm={6}>
-                        <Card style={{ width: '18rem' }}>
-                            {/* <Card.Img variant="top" src={food1} /> */}
-                            <Card.Img variant="top" src='/images/food1.jpg' />
-                            <Card.Body>
-                                <Card.Title>초코케이크</Card.Title>
-                                <Card.Text>
-                                    꾸덕하고 달달함
-                                </Card.Text>
-                                <Button variant="primary">Go somewhere</Button>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                    <Col md={4} sm={6}>
-                        <Card style={{ width: '18rem' }}>
-                            <Card.Img variant="top" src={process.env.PUBLIC_URL + '/images/food2.jpg'} />
-                            <Card.Body>
-                                <Card.Title>감자튀김</Card.Title>
-                                <Card.Text>
-                                    짭짭하고 고소함
-                                </Card.Text>
-                                <Button variant="primary">Go somewhere</Button>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                    <Col md={4} sm={6}>
-                        <Card style={{ width: '18rem' }}>
-                            <Card.Img variant="top" src={food3} />
-                            <Card.Body>
-                                <Card.Title>햄버거</Card.Title>
-                                <Card.Text>
-                                    맘스터치 화이트갈릭버거
-                                </Card.Text>
-                                <Button variant="primary">Go somewhere</Button>
-                            </Card.Body>
-                        </Card>
-                    </Col>
+                    {
+                        foods.map((foods) => {
+                            return (
+                                <Col md={4} sm={6}>
+                                    <FoodCard foods={foods} />
+                                </Col>
+                                // <Col md={4} sm={6}>
+                                //     <Card style={{ width: '18rem' }}>
+                                //         {/* <Card.Img variant="top" src={food1} /> */}
+                                //         <Card.Img variant="top" src='/images/food1.jpg' />
+                                //         <Card.Body>
+                                //             <Card.Title>{item.title}</Card.Title>
+                                //             <Card.Text>
+                                //                 {item.content}
+                                //             </Card.Text>
+                                //             <Card.Text>
+                                //                 {item.price}
+                                //             </Card.Text>
+                                //             <Button variant="primary">Go somewhere</Button>
+                                //         </Card.Body>
+                                //     </Card>
+                                // </Col>
+                            );
+                        })
+                    }
                 </Row>
             </Container>
 
