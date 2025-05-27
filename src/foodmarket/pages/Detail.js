@@ -12,6 +12,7 @@ function Detail({ foods }) {
     let [showModal, setShowModal] = useState(false);
 
     let [viewClass, setViewClass] = useState('');
+    let [stock, setStock] = useState('주문하기');
 
     //foods 전체 정보 보유
 
@@ -71,8 +72,8 @@ function Detail({ foods }) {
         setTimeout(()=>{
             setViewClass('end');    // '' -> 'end'
                                 // 'start' -> 'start end'
-        },2);
-        
+        },100);
+
     },[])
 
 
@@ -167,8 +168,8 @@ function Detail({ foods }) {
             <p classNam={ `text-strong` $ food.price >=10000 ? 'price-red' : 'price-blue' }>{food.price}</p>
 
 
-
     */
+
     return (
                             // "start"
         <Container className={'start' + viewClass}>
@@ -188,11 +189,16 @@ function Detail({ foods }) {
                         }}>-</Button>
                         <span> {orderCount} </span>
                         <Button variant="dark" onClick={() => {
-                            setOrderCount(orderCount + 1);
+                            if(orderCount < food.stockCount)
+                                setOrderCount(orderCount + 1);
                         }}>+</Button>
                     </p>
 
-                    <Button variant="primary">주문하기</Button>
+                    {
+                        food.stockCount > 0 ?
+                        <Button variant="primary">주문하기</Button> :
+                        <Button variant="danger" disabled>품절</Button>
+                    }
                 </Col>
             </Row>
 
