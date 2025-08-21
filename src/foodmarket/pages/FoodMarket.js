@@ -13,7 +13,6 @@ import food3 from '../images/food3.jpg';
 import foodsData from '../data/foodsData';
 import { useState } from 'react';
 import FoodCard from '../components/FoodCard';
-
 import { Routes, Route, Link, useNavigate } from 'react-router';
 import Home from './Home';
 import Detail from './Detail';
